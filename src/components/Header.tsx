@@ -11,13 +11,14 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
     { name: 'Services', href: '#services' },
     { name: 'Fahrzeugflotte', href: '#fleet' },
+    { name: 'Galerie', href: '#gallery' },
     { name: 'Buchung', href: '#booking' },
   ];
 
@@ -28,11 +29,12 @@ const Header = () => {
           ? 'bg-midnight/95 backdrop-blur-xl shadow-glow'
           : 'bg-transparent'
       }`}
+      role="banner"
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <a href="/" className="relative group">
+          <a href="/" className="relative group" aria-label="VIPSHUTTLE24 – Startseite">
             <div className="flex items-baseline space-x-1">
               <span className="text-2xl lg:text-3xl font-display font-bold text-silver tracking-tight">
                 VIPSHUTTLE
@@ -45,7 +47,7 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-10">
+          <nav className="hidden lg:flex items-center space-x-10" aria-label="Hauptnavigation">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -63,34 +65,35 @@ const Header = () => {
             <a
               href="tel:+491772472408"
               className="flex items-center space-x-2 text-silver hover:text-silver-light transition-all duration-300 hover:shadow-glow rounded-lg px-4 py-2"
+              aria-label="Jetzt anrufen: +49 177 2472408"
             >
-              <FaPhone className="text-sm" />
+              <FaPhone className="text-sm" aria-hidden="true" />
               <span className="text-sm font-medium">+49 177 2472408</span>
             </a>
-            <a
-              href="https://wa.me/+491772472408"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary flex items-center space-x-2"
-            >
-              <FaWhatsapp />
-              <span>WhatsApp</span>
-            </a>
+
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden text-silver text-2xl hover:text-silver-light transition-colors duration-300"
+            aria-label={isMobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
-            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+            {isMobileMenuOpen ? <FaTimes aria-hidden="true" /> : <FaBars aria-hidden="true" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-midnight/98 backdrop-blur-xl border-t border-silver/10">
+        <div
+          id="mobile-menu"
+          className="lg:hidden bg-midnight/98 backdrop-blur-xl border-t border-silver/10"
+          role="navigation"
+          aria-label="Mobile Navigation"
+        >
           <nav className="container mx-auto px-4 py-8 flex flex-col space-y-6">
             {navItems.map((item) => (
               <a
@@ -106,8 +109,9 @@ const Header = () => {
               <a
                 href="tel:+491772472408"
                 className="flex items-center space-x-3 text-silver py-2"
+                aria-label="Anrufen"
               >
-                <FaPhone />
+                <FaPhone aria-hidden="true" />
                 <span>+49 177 2472408</span>
               </a>
               <a
@@ -115,8 +119,9 @@ const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary flex items-center justify-center space-x-2"
+                aria-label="WhatsApp Chat"
               >
-                <FaWhatsapp />
+                <FaWhatsapp aria-hidden="true" />
                 <span>WhatsApp Chat</span>
               </a>
             </div>
