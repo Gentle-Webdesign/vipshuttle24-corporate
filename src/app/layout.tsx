@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { LangProvider } from "@/i18n/LangContext";
 
 // ─── Viewport (separate export required by Next.js 14+) ──────────────────────
 export const viewport: Viewport = {
@@ -259,7 +260,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body><LangProvider>{children}</LangProvider></body>
     </html>
   );
 }
