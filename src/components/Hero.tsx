@@ -2,7 +2,10 @@
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      aria-label="VipShuttle24 – Premium Chauffeur Service Düsseldorf"
+    >
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -12,6 +15,8 @@ const Hero = () => {
           playsInline
           className="w-full h-full object-cover"
           poster="/11.webp"
+          aria-hidden="true"
+          title="VipShuttle24 Premium Chauffeur Service Düsseldorf"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
@@ -19,7 +24,7 @@ const Hero = () => {
       </div>
 
       {/* Subtle particles */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" aria-hidden="true">
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-silver rounded-full animate-pulse"></div>
         <div
           className="absolute top-1/3 right-1/3 w-1 h-1 bg-silver-light rounded-full animate-pulse"
@@ -39,12 +44,12 @@ const Hero = () => {
           <div className="animate-fade-in">
             <div className="inline-block px-5 py-2 glass-card">
               <span className="text-silver text-xs sm:text-sm font-medium tracking-widest uppercase">
-                Premium Chauffeur Service
+                Premium Chauffeur Service Düsseldorf
               </span>
             </div>
           </div>
 
-          {/* Headline */}
+          {/* Headline – H1, keyword-rich */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gradient leading-tight animate-slide-up px-2">
             Ihre Reise beginnt
             <br />
@@ -68,12 +73,14 @@ const Hero = () => {
             <a
               href="#booking"
               className="btn-primary w-full sm:w-auto min-w-[200px] text-center"
+              aria-label="Jetzt Chauffeur buchen"
             >
               Jetzt buchen
             </a>
             <a
               href="#services"
               className="btn-secondary w-full sm:w-auto min-w-[200px] text-center"
+              aria-label="Unsere Chauffeur-Services entdecken"
             >
               Services entdecken
             </a>
@@ -83,20 +90,22 @@ const Hero = () => {
           <div
             className="grid grid-cols-3 gap-4 pt-12 max-w-2xl mx-auto animate-fade-in"
             style={{ animationDelay: '0.6s' }}
+            role="list"
+            aria-label="Unsere Versprechen"
           >
-            <div className="text-center group">
+            <div className="text-center group" role="listitem">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient mb-1 group-hover:scale-110 transition-transform duration-300">
                 24/7
               </div>
               <div className="text-silver/60 text-xs sm:text-sm">Verfügbar</div>
             </div>
-            <div className="text-center group border-x border-silver/10">
+            <div className="text-center group border-x border-silver/10" role="listitem">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient mb-1 group-hover:scale-110 transition-transform duration-300">
                 10+
               </div>
               <div className="text-silver/60 text-xs sm:text-sm">Jahre Erfahrung</div>
             </div>
-            <div className="text-center group">
+            <div className="text-center group" role="listitem">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient mb-1 group-hover:scale-110 transition-transform duration-300">
                 100%
               </div>

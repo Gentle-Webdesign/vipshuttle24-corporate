@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'AGB | VIPSHUTTLE24 Düsseldorf',
   description: 'Allgemeine Geschäftsbedingungen der VipShuttle24 – Premium Chauffeur Service Düsseldorf.',
   robots: { index: false, follow: false },
+  alternates: { canonical: 'https://vipshuttle-24.de/agb' },
 };
 
 export default function AGB() {

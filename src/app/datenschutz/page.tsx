@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Datenschutzerklärung | VIPSHUTTLE24 Düsseldorf',
   description: 'Datenschutzerklärung der VipShuttle24 gemäß DSGVO.',
   robots: { index: false, follow: false },
+  alternates: { canonical: 'https://vipshuttle-24.de/datenschutz' },
 };
 
 export default function Datenschutz() {

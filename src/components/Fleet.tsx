@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import Image from 'next/image';
 
 const Fleet = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -11,24 +12,28 @@ const Fleet = () => {
       name: 'Mercedes S-Klasse',
       category: 'Luxus-Limousine',
       image: '/5.webp',
+      alt: 'Mercedes S-Klasse Luxus-Limousine – VipShuttle24 Premium Chauffeur Düsseldorf',
       description: 'Unsere Flaggschiff-Limousine für höchste Ansprüche. Maximaler Komfort, modernste Technologie und überlegene Eleganz.',
     },
     {
       name: 'Mercedes E-Klasse',
       category: 'Business-Limousine',
       image: '/7.webp',
+      alt: 'Mercedes E-Klasse Business-Limousine – VipShuttle24 Chauffeur Service NRW',
       description: 'Eleganz und Komfort vereint. Ideal für Geschäftsreisen und repräsentative Anlässe.',
     },
     {
       name: 'Mercedes V-Klasse',
       category: 'VIP-Van',
       image: '/8.webp',
+      alt: 'Mercedes V-Klasse VIP-Van bis 7 Personen – VipShuttle24 Gruppenfahrzeug',
       description: 'Großzügiger Raum für bis zu 7 Personen ohne Abstriche beim Komfort.',
     },
     {
       name: 'Mercedes Sprinter',
       category: 'Gruppenfahrzeug',
       image: '/11.webp',
+      alt: 'Mercedes Sprinter Gruppenfahrzeug – VipShuttle24 Bus Transfer Düsseldorf',
       description: 'Für größere Gruppen und Events. Komfortabler Bus-Transfer mit professionellem Fahrer.',
     },
   ];
@@ -81,11 +86,13 @@ const Fleet = () => {
                 aria-label={`${vehicle.name} ansehen`}
                 onKeyDown={(e) => e.key === 'Enter' && setSelectedImage(index)}
               >
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: `url('${vehicle.image}')` }}
-                  role="img"
-                  aria-label={vehicle.name}
+                {/* Next.js Image – properly indexed by Google */}
+                <Image
+                  src={vehicle.image}
+                  alt={vehicle.alt}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 40vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/50 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
 
@@ -134,6 +141,7 @@ const Fleet = () => {
           onClick={() => setSelectedImage(null)}
           role="dialog"
           aria-modal="true"
+          aria-label={`${vehicles[selectedImage].name} – Fahrzeugdetail`}
         >
           <button
             onClick={() => setSelectedImage(null)}
@@ -168,9 +176,12 @@ const Fleet = () => {
               className="relative rounded-lg overflow-hidden"
               style={{ aspectRatio: '16/9', maxHeight: '65vh' }}
             >
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url('${vehicles[selectedImage].image}')` }}
+              <Image
+                src={vehicles[selectedImage].image}
+                alt={vehicles[selectedImage].alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1280px) 95vw, 1280px"
               />
             </div>
             <div className="glass-card rounded-b-none rounded-t-none mt-0 p-4 sm:p-6">

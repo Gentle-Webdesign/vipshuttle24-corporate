@@ -1,6 +1,7 @@
 'use client';
 
 import { FaPlane, FaHeart, FaBriefcase, FaArrowRight } from 'react-icons/fa';
+import Image from 'next/image';
 
 const Services = () => {
   const services = [
@@ -17,6 +18,7 @@ const Services = () => {
         'Alle Flughäfen in NRW',
       ],
       image: '/2.webp',
+      imageAlt: 'VipShuttle24 Airport Transfer Düsseldorf – Mercedes Chauffeur am Flughafen',
     },
     {
       icon: FaHeart,
@@ -31,6 +33,7 @@ const Services = () => {
         'Fotoshooting möglich',
       ],
       image: '/3.webp',
+      imageAlt: 'VipShuttle24 Hochzeitsfahrt NRW – Luxus Brautauto Mercedes',
     },
     {
       icon: FaBriefcase,
@@ -45,6 +48,7 @@ const Services = () => {
         'Flexible Routenplanung',
       ],
       image: '/4.webp',
+      imageAlt: 'VipShuttle24 Corporate Roadshow NRW – Business Chauffeur Service',
     },
   ];
 
@@ -84,20 +88,21 @@ const Services = () => {
               className="glass-card group overflow-hidden"
               style={{ animation: `slideUp 0.8s ease-out ${index * 0.15}s both` }}
             >
-              {/* Mobile: stacked. Desktop: side-by-side alternating */}
               <div className={`flex flex-col lg:grid lg:grid-cols-2 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
 
-                {/* Image – top on mobile, side on desktop */}
+                {/* Image – uses Next.js Image for optimization + proper alt for SEO */}
                 <div
                   className={`relative h-52 sm:h-64 lg:h-auto lg:min-h-[380px] overflow-hidden ${
                     index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'
                   }`}
                 >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{ backgroundImage: `url('${service.image}')` }}
-                    role="img"
-                    aria-label={service.title}
+                  <Image
+                    src={service.image}
+                    alt={service.imageAlt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    priority={index === 0}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/20 to-transparent" />
                 </div>

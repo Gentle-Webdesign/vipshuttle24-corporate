@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Impressum | VIPSHUTTLE24 Düsseldorf',
   description: 'Impressum der VipShuttle24 – Ahmet Bostanci, Schlesische Str. 104, 40231 Düsseldorf.',
   robots: { index: false, follow: false },
+  alternates: { canonical: 'https://vipshuttle-24.de/impressum' },
 };
 
 export default function Impressum() {

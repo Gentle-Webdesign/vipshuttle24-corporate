@@ -2,15 +2,33 @@
 
 import { useState, useCallback } from 'react';
 import { FaTimes, FaChevronLeft, FaChevronRight, FaImages, FaChevronDown } from 'react-icons/fa';
+import Image from 'next/image';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [expanded, setExpanded] = useState(false);
 
-  const images = Array.from({ length: 19 }, (_, i) => ({
-    src: `/${i + 1}.webp`,
-    alt: `VipShuttle24 Düsseldorf – Premium Chauffeur Service Bild ${i + 1}`,
-  }));
+  const images = [
+    { src: '/1.webp',  alt: 'VipShuttle24 – Premium Chauffeur Service Düsseldorf, Luxusfahrzeug Innenraum' },
+    { src: '/2.webp',  alt: 'VipShuttle24 – Airport Transfer Düsseldorf, Mercedes am Flughafen' },
+    { src: '/3.webp',  alt: 'VipShuttle24 – Hochzeitsfahrt NRW, geschmücktes Brautauto' },
+    { src: '/4.webp',  alt: 'VipShuttle24 – Corporate Roadshow NRW, Business Limousine' },
+    { src: '/5.webp',  alt: 'VipShuttle24 – Mercedes S-Klasse, Luxus-Limousine Düsseldorf' },
+    { src: '/6.webp',  alt: 'VipShuttle24 – Premium Fahrzeugflotte, exklusive Limousine' },
+    { src: '/7.webp',  alt: 'VipShuttle24 – Mercedes E-Klasse, Business-Limousine NRW' },
+    { src: '/8.webp',  alt: 'VipShuttle24 – Mercedes V-Klasse VIP-Van, Gruppenfahrzeug' },
+    { src: '/9.webp',  alt: 'VipShuttle24 – Chauffeur Service Düsseldorf, eleganter Transfer' },
+    { src: '/10.webp', alt: 'VipShuttle24 – Stundenweise Buchung, Limousine mit Fahrer' },
+    { src: '/11.webp', alt: 'VipShuttle24 – Mercedes Sprinter, Gruppenbus Düsseldorf' },
+    { src: '/12.webp', alt: 'VipShuttle24 – VIP-Service NRW, Luxusfahrzeug Außenansicht' },
+    { src: '/13.webp', alt: 'VipShuttle24 – Premium Chauffeur, gepflegter Mercedes Innenraum' },
+    { src: '/14.webp', alt: 'VipShuttle24 – Flughafentransfer Köln, professioneller Fahrer' },
+    { src: '/15.webp', alt: 'VipShuttle24 – Abendveranstaltung Transfer, elegante Fahrt' },
+    { src: '/16.webp', alt: 'VipShuttle24 – Messe Shuttle Düsseldorf, Geschäftsreise NRW' },
+    { src: '/17.webp', alt: 'VipShuttle24 – Luxus Limousinenservice, schwarzer Mercedes' },
+    { src: '/18.webp', alt: 'VipShuttle24 – Nachtfahrt Düsseldorf, stilvoller City Transfer' },
+    { src: '/19.webp', alt: 'VipShuttle24 – Premium Transfer NRW, Chauffeur mit Fahrgast' },
+  ];
 
   const INITIAL_COUNT = 6;
   const visibleImages = expanded ? images : images.slice(0, INITIAL_COUNT);
@@ -59,7 +77,7 @@ const Gallery = () => {
             </p>
           </div>
 
-          {/* Image Grid */}
+          {/* Image Grid – uses Next.js Image for optimized delivery */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
             {visibleImages.map((img, index) => (
               <div
@@ -72,15 +90,16 @@ const Gallery = () => {
                 onClick={() => setSelectedImage(index)}
                 role="button"
                 tabIndex={0}
-                aria-label={img.alt}
+                aria-label={`Bild öffnen: ${img.alt}`}
                 onKeyDown={(e) => e.key === 'Enter' && setSelectedImage(index)}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={img.src}
                   alt={img.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading={index < INITIAL_COUNT ? 'eager' : 'lazy'}
                 />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-midnight/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -166,18 +185,18 @@ const Gallery = () => {
             <FaChevronRight className="text-silver" />
           </button>
 
-          {/* Image container */}
+          {/* Image */}
           <div
-            className="w-full max-w-5xl flex items-center justify-center mt-10"
+            className="w-full max-w-5xl flex items-center justify-center mt-10 relative"
             onClick={(e) => e.stopPropagation()}
-            style={{ maxHeight: '78vh' }}
+            style={{ maxHeight: '78vh', aspectRatio: '16/9' }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={images[selectedImage].src}
               alt={images[selectedImage].alt}
-              className="max-w-full rounded-lg shadow-2xl object-contain"
-              style={{ maxHeight: '78vh' }}
+              fill
+              className="object-contain rounded-lg"
+              sizes="(max-width: 1280px) 95vw, 1280px"
             />
           </div>
         </div>
