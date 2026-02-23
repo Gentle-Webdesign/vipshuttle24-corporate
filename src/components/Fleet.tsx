@@ -9,32 +9,32 @@ const Fleet = () => {
 
   const vehicles = [
     {
-      name: 'Mercedes S-Klasse',
+      name: 'Mercedes-Benz S-Klasse',
       category: 'Luxus-Limousine',
       image: '/5.webp',
-      alt: 'Mercedes S-Klasse Luxus-Limousine – VipShuttle24 Premium Chauffeur Düsseldorf',
+      alt: 'Mercedes-Benz S-Klasse Luxus-Limousine – VipShuttle24 Premium Chauffeur Düsseldorf',
       description: 'Unsere Flaggschiff-Limousine für höchste Ansprüche. Maximaler Komfort, modernste Technologie und überlegene Eleganz.',
     },
     {
-      name: 'Mercedes E-Klasse',
+      name: 'Mercedes-Benz E-Klasse',
       category: 'Business-Limousine',
-      image: '/7.webp',
-      alt: 'Mercedes E-Klasse Business-Limousine – VipShuttle24 Chauffeur Service NRW',
+      image: '/6.webp',
+      alt: 'Mercedes-Benz E-Klasse Business-Limousine – VipShuttle24 Chauffeur Service NRW',
       description: 'Eleganz und Komfort vereint. Ideal für Geschäftsreisen und repräsentative Anlässe.',
     },
     {
-      name: 'Mercedes V-Klasse',
+      name: 'Mercedes-Benz V-Klasse',
       category: 'VIP-Van',
-      image: '/8.webp',
-      alt: 'Mercedes V-Klasse VIP-Van bis 7 Personen – VipShuttle24 Gruppenfahrzeug',
+      image: '/7.webp',
+      alt: 'Mercedes-Benz V-Klasse VIP-Van bis 7 Personen – VipShuttle24 Gruppenfahrzeug',
       description: 'Großzügiger Raum für bis zu 7 Personen ohne Abstriche beim Komfort.',
     },
     {
-      name: 'Mercedes Sprinter',
-      category: 'Gruppenfahrzeug',
-      image: '/11.webp',
-      alt: 'Mercedes Sprinter Gruppenfahrzeug – VipShuttle24 Bus Transfer Düsseldorf',
-      description: 'Für größere Gruppen und Events. Komfortabler Bus-Transfer mit professionellem Fahrer.',
+      name: 'Mercedes-Benz V-Klasse',
+      category: 'VIP-Van',
+      image: '/19.webp',
+      alt: 'Mercedes-Benz V-Klasse VIP-Van – VipShuttle24 Premium Gruppenfahrzeug NRW',
+      description: 'Weitere V-Klasse für Gruppen und besondere Anlässe. Gleicher Premium-Komfort, maximale Flexibilität.',
     },
   ];
 
@@ -71,7 +71,7 @@ const Fleet = () => {
           </div>
 
           {/* 2x2 Grid */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 max-w-7xl mx-auto">
             {vehicles.map((vehicle, index) => (
               <div
                 key={vehicle.name}
@@ -91,7 +91,7 @@ const Fleet = () => {
                   src={vehicle.image}
                   alt={vehicle.alt}
                   fill
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 40vw, 25vw"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 50vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/50 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
@@ -117,10 +117,10 @@ const Fleet = () => {
           </div>
 
           {/* Stats */}
-          <div className="mt-10 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-6 text-center max-w-3xl mx-auto">
+          <div className="mt-10 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-6 text-center max-w-7xl mx-auto">
             {[
               { value: '100% Mercedes', label: 'Exklusive Premiummarke' },
-              { value: '< 3 Jahre', label: 'Neueste Modelle' },
+              { value: '< 10 Jahre', label: 'Neueste Modelle' },
               { value: '100%', label: 'Regelmäßig gewartet' },
             ].map((stat) => (
               <div key={stat.label} className="glass-card p-4 sm:p-6">

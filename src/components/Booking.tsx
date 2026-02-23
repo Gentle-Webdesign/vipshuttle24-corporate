@@ -100,10 +100,10 @@ ${formData.name}`
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto items-stretch">
 
           {/* Contact Info */}
-          <div className="space-y-4 sm:space-y-6">
+          <div className="flex flex-col gap-4 sm:gap-5">
             <div className="glass-card p-6 sm:p-8 space-y-4">
               <h3 className="text-xl sm:text-2xl font-display font-bold text-silver mb-4">
                 Kontaktinformationen
@@ -187,6 +187,43 @@ ${formData.name}`
                     <p className="text-platinum font-medium">7 Tage die Woche, 24 Stunden am Tag</p>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Why choose us – fills remaining height */}
+            <div className="glass-card p-6 sm:p-8 flex-1">
+              <h4 className="text-base sm:text-lg font-display font-bold text-silver mb-5">
+                Warum VIPSHUTTLE24?
+              </h4>
+              <div className="space-y-4">
+                {[
+                  {
+                    title: 'Festpreisgarantie',
+                    text: 'Kein Taxameter – Sie kennen Ihren Preis vor der Fahrt.',
+                  },
+                  {
+                    title: 'Diskret & pünktlich',
+                    text: 'Absolute Verschwiegenheit und minutengenaue Zuverlässigkeit.',
+                  },
+                  {
+                    title: 'Nur Premium-Fahrzeuge',
+                    text: 'Ausschließlich gepflegte Mercedes-Benz, nicht älter als 3 Jahre.',
+                  },
+                  {
+                    title: 'Kurzfristig buchbar',
+                    text: 'Schnelle Verfügbarkeit – rufen Sie uns direkt an.',
+                  },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start space-x-3">
+                    <div className="w-5 h-5 mt-0.5 rounded-full bg-gradient-to-br from-silver/30 to-platinum/30 flex items-center justify-center flex-shrink-0">
+                      <div className="w-1.5 h-1.5 bg-silver rounded-full" />
+                    </div>
+                    <div>
+                      <p className="text-silver font-semibold text-sm">{item.title}</p>
+                      <p className="text-silver/60 text-xs mt-0.5 leading-relaxed">{item.text}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
